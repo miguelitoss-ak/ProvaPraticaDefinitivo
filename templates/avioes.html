@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo_pagina }}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>✈️ Coleção de Cartas: Aviões</h1>
+    
+    <div class="menu">
+        <a href="avioes_inserir.php">Nova Carta</a>
+    </div>
+
+    <div class="album">
+        {% for aviao in colecao %}
+            <div class="card raridade-{{ aviao.raridade|lower|replace({' ': '-'}) }}">
+                <div class="card-header">
+                    <span class="categoria">{{ aviao.categoria }}</span>
+                    <h3>{{ aviao.modelo }}</h3>
+                </div>
+                
+                <div class="card-body">
+                    <p><strong>Fabricante:</strong> {{ aviao.fabricante }}</p>
+                    <p><strong>Ano:</strong> {{ aviao.ano_lancamento }}</p>
+                    <p class="descricao">{{ aviao.descricao }}</p>
+                </div>
+
+                <div class="card-footer">
+                    <span class="tag-raridade">{{ aviao.raridade }}</span>
+                    <div class="acoes">
+                        <a href="avioes_editar.php?id={{ aviao.id }}">Editar</a>
+                        <a href="avioes_excluir.php?id={{ aviao.id }}">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>Nenhuma carta encontrada no álbum.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

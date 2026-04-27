@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Nova Carta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🛩️ Adicionar Avião à Coleção</h1>
+
+    <form action="jogos_inserir.php" method="POST" id="formAviao">
+        <div class="campo">
+            <label>Modelo:</label>
+            <br>
+            <input type="text" name="modelo" id="modelo" required placeholder="Ex: Airbus A380">
+        </div>
+
+        <div class="campo">
+            <label>Fabricante:</label>
+            <br>
+            <input type="text" name="fabricante" required placeholder="Ex: Airbus">
+        </div>
+
+        <div class="campo">
+            <label>Ano de Lançamento:</label>
+            <br>
+            <input type="number" name="ano" id="ano" required>
+        </div>
+
+        <div class="campo">
+            <label>Raridade:</label>
+            <br>
+            <select name="raridade">
+                <option value="Comum">Comum</option>
+                <option value="Pouco Comum">Pouco Comum</option>
+                <option value="Raro">Raro</option>
+                <option value="Épico">Épico</option>
+                <option value="Lendário">Lendário</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label>Categoria:</label>
+            <br>
+            <input type="radio" name="categoria" value="Civil" checked> Civil
+            <input type="radio" name="categoria" value="Militar"> Militar
+        </div>
+
+        <div class="campo">
+            <label>Descrição/Habilidades:</label>
+            <br>
+            <textarea name="descricao" rows="4" cols="23" maxlength="200"></textarea>
+        </div>
+
+        <button type="submit">Criar Carta!</button>
+        <a href="index.php">Voltar ao Álbum</a>
+    </form>
+
+    <script>
+        // Validação Front-end (Requisito do Trabalho)
+        document.getElementById('formAviao').onsubmit = function(e) {
+            const ano = document.getElementById('ano').value;
+            const atual = new Date().getFullYear();
+            if (ano > atual + 5 || ano < 1900) {
+                alert("Por favor, insira um ano válido!");
+                e.preventDefault();
+            }
+        };
+    </script>
+</body>
+</html>
