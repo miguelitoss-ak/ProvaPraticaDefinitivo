@@ -1,5 +1,5 @@
 <?php
-// jogos.php
+// avioes.php
 require_once 'carregar_twig.php'; // Configuração do Twig
 require_once 'carregar_pdo.php';  // Conexão com Banco
 

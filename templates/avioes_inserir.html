@@ -3,69 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Adicionar Nova Carta</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>🛩️ Adicionar Avião à Coleção</h1>
 
-    <form action="jogos_inserir.php" method="POST" id="formAviao">
-        <div class="campo">
-            <label>Modelo:</label>
-            <br>
-            <input type="text" name="modelo" id="modelo" required placeholder="Ex: Airbus A380">
+<body class="bg-light">
+
+<div class="container py-5">
+
+    <div class="card shadow mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+
+            <h3 class="text-center mb-4">🛩️ Adicionar Avião</h3>
+
+            <form action="avioes_inserir.php" method="POST" id="formAviao">
+
+                <!-- Modelo -->
+                <div class="mb-3">
+                    <label class="form-label">Modelo</label>
+                    <input type="text" name="modelo" id="modelo" class="form-control" required>
+                </div>
+
+                <!-- Fabricante -->
+                <div class="mb-3">
+                    <label class="form-label">Fabricante</label>
+                    <input type="text" name="fabricante" class="form-control" required>
+                </div>
+
+                <!-- Ano -->
+                <div class="mb-3">
+                    <label class="form-label">Ano de Lançamento</label>
+                    <input type="number" name="ano" id="ano" class="form-control" required>
+                </div>
+
+                <!-- Raridade -->
+                <div class="mb-3">
+                    <label class="form-label">Raridade</label>
+                    <select name="raridade" class="form-select">
+                        <option>Comum</option>
+                        <option>Raro</option>
+                        <option>Épico</option>
+                        <option>Lendário</option>
+                    </select>
+                </div>
+
+                <!-- Categoria -->
+                <div class="mb-3">
+                    <label class="form-label">Categoria</label><br>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="categoria" value="Civil" checked>
+                        <label class="form-check-label">Civil</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="categoria" value="Militar">
+                        <label class="form-check-label">Militar</label>
+                    </div>
+                </div>
+
+                <!-- Descrição -->
+                <div class="mb-3">
+                    <label class="form-label">Descrição</label>
+                    <textarea name="descricao" class="form-control" rows="3" maxlength="200"></textarea>
+                </div>
+
+                <!-- Botões -->
+                <div class="d-flex justify-content-between">
+                    <a href="index.php" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn btn-success">Criar Carta</button>
+                </div>
+
+            </form>
+
         </div>
+    </div>
 
-        <div class="campo">
-            <label>Fabricante:</label>
-            <br>
-            <input type="text" name="fabricante" required placeholder="Ex: Airbus">
-        </div>
+</div>
 
-        <div class="campo">
-            <label>Ano de Lançamento:</label>
-            <br>
-            <input type="number" name="ano" id="ano" required>
-        </div>
+<script>
+document.getElementById('formAviao').onsubmit = function(e) {
+    const ano = document.getElementById('ano').value;
+    const atual = new Date().getFullYear();
 
-        <div class="campo">
-            <label>Raridade:</label>
-            <br>
-            <select name="raridade">
-                <option value="Comum">Comum</option>
-                <option value="Pouco Comum">Pouco Comum</option>
-                <option value="Raro">Raro</option>
-                <option value="Épico">Épico</option>
-                <option value="Lendário">Lendário</option>
-            </select>
-        </div>
+    if (ano > atual + 5 || ano < 1900) {
+        alert("Por favor, insira um ano válido!");
+        e.preventDefault();
+    }
+};
+</script>
 
-        <div class="campo">
-            <label>Categoria:</label>
-            <br>
-            <input type="radio" name="categoria" value="Civil" checked> Civil
-            <input type="radio" name="categoria" value="Militar"> Militar
-        </div>
-
-        <div class="campo">
-            <label>Descrição/Habilidades:</label>
-            <br>
-            <textarea name="descricao" rows="4" cols="23" maxlength="200"></textarea>
-        </div>
-
-        <button type="submit">Criar Carta!</button>
-        <a href="index.php">Voltar ao Álbum</a>
-    </form>
-
-    <script>
-        // Validação Front-end (Requisito do Trabalho)
-        document.getElementById('formAviao').onsubmit = function(e) {
-            const ano = document.getElementById('ano').value;
-            const atual = new Date().getFullYear();
-            if (ano > atual + 5 || ano < 1900) {
-                alert("Por favor, insira um ano válido!");
-                e.preventDefault();
-            }
-        };
-    </script>
 </body>
 </html>
