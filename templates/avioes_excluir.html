@@ -26,13 +26,7 @@
                     {{ aviao.fabricante }} • {{ aviao.ano_lancamento }}
                 </p>
 
-                <span class="badge 
-    {% if aviao.raridade == 'Comum' %}bg-secondary
-    {% elseif aviao.raridade == 'Raro' %}bg-primary
-    {% elseif aviao.raridade == 'Épico' %}bg-success
-    {% elseif aviao.raridade == 'Lendário' %}bg-warning
-    {% endif %}
-">
+                <span class="badge"{% if aviao.raridade == 'Comum' %} style="background-color: #6c757d"{% elseif aviao.raridade == 'Raro' %} style="background-color: #0d6efd"{% elseif aviao.raridade == 'Épico' %} style="background-color: #9b59b6"{% elseif aviao.raridade == 'Lendário' %} style="background-color: #ffc107; color: #000"{% endif %}>
     {{ aviao.raridade }}
 </span>
             </div>

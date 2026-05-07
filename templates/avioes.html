@@ -12,7 +12,7 @@
 
 <div class="container py-4">
 
-    <h1 class="mb-4 text-center">✈️ Coleção de Cartas: Aviões</h1>
+    <h1 class="mb-4 text-center">Cartas Colecionáveis</h1>
 
     <!-- Botão -->
     <div class="mb-3 text-end">
@@ -39,19 +39,13 @@
                 </div>
 
                 <div class="card-footer d-flex justify-content-between align-items-center">
-                    <span class="badge 
-    {% if aviao.raridade == 'Comum' %}bg-secondary
-    {% elseif aviao.raridade == 'Raro' %}bg-primary
-    {% elseif aviao.raridade == 'Épico' %}bg-success
-    {% elseif aviao.raridade == 'Lendário' %}bg-warning
-    {% endif %}
-">
+                    <span class="badge"{% if aviao.raridade == 'Comum' %} style="background-color: #6c757d"{% elseif aviao.raridade == 'Raro' %} style="background-color: #0d6efd"{% elseif aviao.raridade == 'Épico' %} style="background-color: #9b59b6"{% elseif aviao.raridade == 'Lendário' %} style="background-color: #ffc107; color: #000"{% endif %}>
     {{ aviao.raridade }}
 </span>
 
                     <div>
-                        <a href="avioes_editar.php?id={{ aviao.id }}" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="avioes_excluir.php?id={{ aviao.id }}" class="btn btn-sm btn-danger">Excluir</a>
+                        <a href="avioes_editar.php?id={{ aviao.id }}" class="btn btn-sm btn-warning">✍🏼</a>
+                        <a href="avioes_excluir.php?id={{ aviao.id }}" class="btn btn-sm btn-danger">🗑️</a>
                     </div>
                 </div>
 
