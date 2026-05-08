@@ -4,7 +4,7 @@ require_once 'carregar_pdo.php';
 require_once 'carregar_twig.php';
 
 // Busca os dados (READ)
-$query = $pdo->query("SELECT * FROM colecao ORDER BY id DESC");
+$query = $pdo->query("SELECT * FROM colecao ORDER BY CASE raridade WHEN 'Lendário' THEN 4 WHEN 'Épico' THEN 3 WHEN 'Raro' THEN 2 WHEN 'Comum' THEN 1 ELSE 0 END DESC, id DESC");
 $avioes = $query->fetchAll();
 
 // 3. Renderiza o template 'avioes.html' (que está na pasta templates)

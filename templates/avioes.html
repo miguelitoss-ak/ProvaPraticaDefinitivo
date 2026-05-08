@@ -17,45 +17,46 @@
     <!-- Botão -->
     <div class="mb-3 text-end">
         <a href="avioes_inserir.php" class="btn btn-primary">Nova Carta</a>
-        <a href="avioes_inserir.php" class="btn btn-primary"> Nova Carta</a>
     </div>
 
     <!-- Cards -->
-    <div class="row">
-        {% for aviao in colecao %}
-        
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
+    <div class="bg-secondary bg-opacity-10 rounded-4 p-4 mb-4 overflow-auto" style="max-height: 70vh;">
+        <div class="row">
+            {% for aviao in colecao %}
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
 
-                <div class="card-body">
-                    <h5 class="card-title">{{ aviao.modelo }}</h5>
-                    <span class="badge {% if aviao.categoria == 'Militar' %}bg-success {% else %}bg-primary {% endif %}">{{ aviao.categoria }}</span>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ aviao.modelo }}</h5>
+                        <span class="badge {% if aviao.categoria == 'Militar' %}bg-success {% else %}bg-primary {% endif %}">{{ aviao.categoria }}</span>
 
-                    <p class="card-text">
-                        <strong>Fabricante:</strong> {{ aviao.fabricante }}<br>
-                        <strong>Ano:</strong> {{ aviao.ano_lancamento }}
-                    </p>
+                        <p class="card-text">
+                            <strong>Fabricante:</strong> {{ aviao.fabricante }}<br>
+                            <strong>Ano:</strong> {{ aviao.ano_lancamento }}
+                        </p>
 
-                    <p class="card-text">{{ aviao.descricao }}</p>
-                </div>
+                        <p class="card-text">{{ aviao.descricao }}</p>
+                    </div>
 
-                <div class="card-footer d-flex justify-content-between align-items-center">
-                    <span class="badge"{% if aviao.raridade == 'Comum' %} style="background-color: #6c757d"{% elseif aviao.raridade == 'Raro' %} style="background-color: #0d6efd"{% elseif aviao.raridade == 'Épico' %} style="background-color: #9b59b6"{% elseif aviao.raridade == 'Lendário' %} style="background-color: #ffc107; color: #000"{% endif %}>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <span class="badge"{% if aviao.raridade == 'Comum' %} style="background-color: #6c757d"{% elseif aviao.raridade == 'Raro' %} style="background-color: #0d6efd"{% elseif aviao.raridade == 'Épico' %} style="background-color: #9b59b6"{% elseif aviao.raridade == 'Lendário' %} style="background-color: #ffc107; color: #000"{% endif %}>
     {{ aviao.raridade }}
 </span>
 
-                    <div>
-                        <a href="avioes_editar.php?id={{ aviao.id }}" class="btn btn-sm btn-warning">✍🏼</a>
-                        <a href="avioes_excluir.php?id={{ aviao.id }}" class="btn btn-sm btn-danger">🗑️</a>
+                        <div>
+                            <a href="avioes_editar.php?id={{ aviao.id }}" class="btn btn-sm btn-warning">✍🏼</a>
+                            <a href="avioes_excluir.php?id={{ aviao.id }}" class="btn btn-sm btn-danger">🗑️</a>
+                        </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
 
-        {% else %}
-            <p>Nenhuma carta encontrada no álbum.</p>
-        {% endfor %}
+            {% else %}
+                <p>Nenhuma carta encontrada no álbum.</p>
+            {% endfor %}
+        </div>
     </div>
 
 </div>
